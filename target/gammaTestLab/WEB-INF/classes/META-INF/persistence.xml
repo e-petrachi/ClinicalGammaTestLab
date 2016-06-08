@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence version="1.0"
+             xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+
+    <persistence-unit name="GTlaboratory" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<!-- <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider> -->
+		<jta-data-source>PostgreSQL Clinica</jta-data-source>
+		<non-jta-data-source>PostgreSQL Clinica</non-jta-data-source>
+		<class>gt.model.Amministratore</class>
+		<class>gt.model.Esame</class>
+		<class>gt.model.Indicatore</class>
+		<class>gt.model.Medico</class>
+		<class>gt.model.Paziente</class>
+		<class>gt.model.Prerequisito</class>
+		<class>gt.model.Risultato</class>
+		<class>gt.model.TipologiaEsame</class>
+		<properties>
+			<!--<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />-->
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<property name="javax.persistence.jdbc.user" value="postgres" />
+			<property name="javax.persistence.jdbc.password" value="postgres" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/clinicaGamma" />
+			
+			<property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+		</properties>
+	</persistence-unit>
+
+</persistence>
