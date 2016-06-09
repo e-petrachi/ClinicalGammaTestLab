@@ -1,7 +1,22 @@
 package gt.model;
 
 import java.util.*;
-import javax.persistence.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 
 @Entity
 @Table(name = "esame")
@@ -14,7 +29,7 @@ public class Esame {
 	private Date dataprenotazione;	
 	@Temporal(TemporalType.DATE)
 	private Date dataeffettuata;	
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private TipologiaEsame tipologiaEsame;
     @ManyToOne
     private Paziente paziente;

@@ -125,7 +125,12 @@ public class FacadeUC1 {
 			em.persist(tipo4);
 			em.merge(indicatoreGV);
 
-
+			TipologiaEsame tipo5 = new TipologiaEsame("RX","Si esegue la risonanza magnetica a raggi x", 100);
+			em.persist(tipo5);
+			
+			TipologiaEsame tipo6 = new TipologiaEsame("Tac","Si esegue la radiografia", 70);
+			em.persist(tipo6);
+			
 			Esame esame1 = new Esame(p1,tipo1);
 			esame1.setMedico(m1);
 			p1.addEsame(esame1);

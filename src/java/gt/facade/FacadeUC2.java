@@ -38,22 +38,25 @@ public class FacadeUC2 {
 		return  t;
 	}
 
-	public Esame creaEsame(long codTipoEsame,String user){
+	public Esame creaEsame(Paziente p,TipologiaEsame t){
 
-		TipologiaEsame tipoEsame;
-		Paziente paziente;
-
-		paziente= em.find(Paziente.class, user);
-		if(paziente==null) return null;
-		tipoEsame= em.find(TipologiaEsame.class, codTipoEsame);
-		if(tipoEsame==null) return null;
-		Esame esame=new Esame(paziente,tipoEsame);
-		paziente.addEsame(esame);
+		Esame esame=new Esame(p, t);
+		p.addEsame(esame);
 
 		em.persist(esame);
+		em.merge(p);
+		
 		logger.debug(em);
 
 		return esame;
+	}
+	public TipologiaEsame trovaTipoEsame(long codTipoEsame){
+		TipologiaEsame tipoEsame = em.find(TipologiaEsame.class, codTipoEsame);
+		return tipoEsame;
+	}
+	public Paziente trovaPaziente(String user){
+		Paziente paziente = em.find(Paziente.class, user);
+		return paziente;
 	}
 
 	public EntityManager getEm() {return em;}
