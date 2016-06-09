@@ -38,11 +38,11 @@ public class ManagedBeanUC2 implements Serializable {
 	public String creaEsame(){	
 		this.setPazienti(facade.getPazienti());
 		if(facade.trovaTipoEsame(tipo)==null) {return "index.xhtml";}
-		this.t=facade.trovaTipoEsame(tipo);
+		this.setT(facade.trovaTipoEsame(tipo));
 		return "associaPaziente.xhtml";
 	}
 	public String associaEsame(){	
-		this.p=facade.trovaPaziente(paziente);	
+		this.setP(facade.trovaPaziente(paziente));	
 		Esame e = facade.creaEsame(p,t);
 		if(e==null) return "erroreInserimentoEsame.xhtml";
 		else{
@@ -63,5 +63,10 @@ public class ManagedBeanUC2 implements Serializable {
 	public void setPazienti(List<Paziente> pazienti) {this.pazienti = pazienti;}
 	public FacadeUC2 getFacade() {return facade;}
 	public void setFacade(FacadeUC2 facade) {this.facade = facade;}
+	public Paziente getP() {return p;}
+	public void setP(Paziente p) {this.p = p;}
+	public TipologiaEsame getT() {return t;}
+	public void setT(TipologiaEsame t) {this.t = t;}
+	
 	
 }

@@ -50,8 +50,6 @@ public class TipologiaEsame {
 	public void setIndicatori(List<Indicatore> indicatori) {this.indicatori = indicatori;}
 	public String getNome() {return nome;}
 	public void setNome(String nome) {this.nome = nome;}
-	public long getCodice() {return id;}
-	public void setCodice(long codice) {this.id = codice;}
 	public String getDescrizione() {return descrizione;}
 	public void setDescrizione(String descrizione) {this.descrizione = descrizione;}
 	public float getCosto() {return costo;}

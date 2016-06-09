@@ -39,15 +39,11 @@ public class FacadeUC2 {
 	}
 
 	public Esame creaEsame(Paziente p,TipologiaEsame t){
-
-		Esame esame=new Esame(p, t);
+		Esame esame = new Esame(p, t);
 		p.addEsame(esame);
-
 		em.persist(esame);
 		em.merge(p);
-		
 		logger.debug(em);
-
 		return esame;
 	}
 	public TipologiaEsame trovaTipoEsame(long codTipoEsame){
