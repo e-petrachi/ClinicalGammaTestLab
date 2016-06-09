@@ -1,5 +1,8 @@
 # gammaTestLab
 Project for the course of SIW in 06/2016
+Course of Degree in Computer Engineering
+Developer: Enrico Petrachi & Marco Zebi 
+
 Used technologies: 
 - JAVA
 - JEE + EJB
@@ -13,7 +16,8 @@ Used technologies:
 - XML + DTD
 - SQL + JPQL 
 - PostgreSQL + JDBC
-- TomEE
+- Apache Maven
+- Apache TomEE
 - Eclipse
 - Git
 
