@@ -101,83 +101,7 @@
 			</div>
 			<div class="l-box pure-u-1-5"></div>
 		</div>
-		<div class="pure-g">
-			<div class="l-box pure-u-1-5"></div>
-			<div class="l-box pure-u-3-5">
-				<div class="dash">
-					<h3>
-						<i class="fa fa-plus-square-o"></i>
-						<h:outputText value="&#160;" />
-						Aggiungi gli Indicatori e i Requisiti alla Tipologia
-					</h3>
-
-
-					<h:form styleClass="pure-form pure-form-aligned">
-						<div class="pure-u-1 sx">
-							<label class="darkgrey font-plus"> <h:outputText
-									value="&#160;" /> <h:outputText value="&#160;" /> ID
-								Tipologia
-							</label>
-							<h:inputText value="#{managedBeanUC4.idTipologia}"
-								styleClass="pure-input readonly" />
-						</div>
-						<div class="pure-u-1 sx">
-						<label class="darkgrey font-plus"> <h:outputText
-									value="&#160;" /> <h:outputText value="&#160;" /> ID
-								Indicatori
-							</label></div>
-						<div class="pure-u-7-24 sx">
-
-							<h:inputText value="#{managedBeanUC4.idIndicatore1}"
-								styleClass="pure-input" />
-						</div>
-						<div class="pure-u-1-24 sx"></div>
-						<div class="pure-u-7-24 sx">
-
-							<h:inputText value="#{managedBeanUC4.idIndicatore2}"
-								styleClass="pure-input" />
-						</div>
-						<div class="pure-u-1-24 sx"></div>
-						<div class="pure-u-7-24 sx">
-
-							<h:inputText value="#{managedBeanUC4.idIndicatore3}"
-								styleClass="pure-input" />
-						</div>
-						<br></br>
-						<div class="pure-u-1 sx">
-						<label class="darkgrey font-plus"> <h:outputText
-									value="&#160;" /> <h:outputText value="&#160;" /> ID
-								Prerequisiti
-							</label></div>
-						<div class="pure-u-7-24 sx">
-
-							<h:inputText value="#{managedBeanUC4.idPrerequisito1}"
-								styleClass="pure-input" />
-						</div>
-						<div class="pure-u-1-24 sx"></div>
-						<div class="pure-u-7-24 sx">
-
-							<h:inputText value="#{managedBeanUC4.idPrerequisito2}"
-								styleClass="pure-input" />
-						</div>
-						<div class="pure-u-1-24 sx"></div>
-						<div class="pure-u-7-24 sx">
-
-							<h:inputText value="#{managedBeanUC4.idPrerequisito3}"
-								styleClass="pure-input" />
-						</div>
-						<br></br>
-						<div class="pure-u-1">
-							<h:commandButton styleClass="pure-button" value="Invia"
-								action="#{managedBeanUC4.aggiungiIndicatoriRequisiti}" />
-						</div>
-
-					</h:form>
-				</div>
-			</div>
-			<div class="l-box pure-u-1-5"></div>
-
-		</div>
+		
 		<!-- QUI LA LISTA DEGLI INDICATORI e REQUISITI -->
 		<div class="pure-g">
 			<div class="l-box pure-u-1-3">
@@ -238,6 +162,85 @@
 		</div>
 
 		<div class="pure-g">
+			<div class="l-box pure-u-1-5"></div>
+			<div class="l-box pure-u-3-5">
+				<div class="dash">
+					<h3>
+						<i class="fa fa-plus-square-o"></i>
+						<h:outputText value="&#160;" />
+						Aggiungi gli Indicatori e i Requisiti alla Tipologia
+					</h3>
+
+
+					<h:form styleClass="pure-form pure-form-aligned">
+						<div class="pure-u-1 sx">
+							<label class="darkgrey font-plus"> <h:outputText
+									value="&#160;" /> <h:outputText value="&#160;" /> ID
+								Tipologia
+							</label>
+							<h:inputText value="#{managedBeanUC4.idTipologia}"
+								styleClass="pure-input readonly" />
+						</div>
+						<div class="pure-u-1 sx">
+						<label class="darkgrey font-plus"> <h:outputText
+									value="&#160;" /> <h:outputText value="&#160;" /> ID
+								Indicatori
+							</label></div>
+						<div class="pure-u-7-24 sx">
+
+							<h:inputText value="#{managedBeanUC4.idIndicatore1}"
+								styleClass="pure-input" />
+						</div>  
+						<div class="pure-u-1-24 sx"></div>
+						<div class="pure-u-7-24 sx">
+
+							<h:inputText value="#{managedBeanUC4.idIndicatore2}"
+								styleClass="pure-input" />
+						</div>
+						<div class="pure-u-1-24 sx"></div>
+						<div class="pure-u-7-24 sx">
+
+							<h:inputText value="#{managedBeanUC4.idIndicatore3}"
+								styleClass="pure-input" />
+						</div> 
+						<br></br>
+						<div class="pure-u-1 sx">
+						<label class="darkgrey font-plus"> <h:outputText
+									value="&#160;" /> <h:outputText value="&#160;" /> ID
+								Prerequisiti
+							</label></div>
+						<div class="pure-u-7-24 sx">
+
+							<h:inputText value="#{managedBeanUC4.idPrerequisito1}"
+								styleClass="pure-input" />
+						</div>  
+						<div class="pure-u-1-24 sx"></div>
+						<div class="pure-u-7-24 sx">
+
+							<h:inputText value="#{managedBeanUC4.idPrerequisito2}"
+								styleClass="pure-input" />
+						</div>
+						<div class="pure-u-1-24 sx"></div>
+						<div class="pure-u-7-24 sx">
+
+							<h:inputText value="#{managedBeanUC4.idPrerequisito3}"
+								styleClass="pure-input" />
+						</div>
+						<br></br>
+						<div class="pure-u-1">
+							<h:commandButton styleClass="pure-button" value="Invia"
+								action="#{managedBeanUC4.aggiungiIndicatoriRequisiti}" />
+						</div>
+
+					</h:form>
+				</div>
+			</div>
+			<div class="l-box pure-u-1-5"></div>
+
+		</div>
+		
+		
+		<div class="pure-g">
 			<div class="l-box pure-u-1-5 "></div>
 			<div class="l-box pure-u-3-5 is-center">
 
@@ -252,8 +255,7 @@
 			</div>
 			<div class="l-box pure-u-1-5 "></div>
 		</div>
-
-
+		
 		<h2 class="is-center content-head black">
 			<br></br>More INFORMATION<br></br>
 		</h2>

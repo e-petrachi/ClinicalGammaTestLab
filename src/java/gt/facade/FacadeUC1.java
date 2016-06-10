@@ -58,9 +58,9 @@ public class FacadeUC1 {
 			em.persist(p3);
 			em.persist(p4);
 
-			Medico m1 = new Medico("Pierluigi","Scuri");
-			Medico m2 = new Medico("Michelangelo","Chiari");
-			Medico m3 = new Medico("Francesco","Medi");
+			Medico m1 = new Medico("Pierluigi","Scuri", "Generico");
+			Medico m2 = new Medico("Michelangelo","Chiari", "Oculista");
+			Medico m3 = new Medico("Francesco","Medi", "Fisiatra");
 			em.persist(m1);
 			em.persist(m2);
 			em.persist(m3);
@@ -111,10 +111,13 @@ public class FacadeUC1 {
 			em.persist(tipo3);
 
 			TipologiaEsame tipo4 = new TipologiaEsame("Vista","Si esegue l'esame della vista", 20);
+			tipo4.addIndicatore(indicatorePM);
 			tipo4.addIndicatore(indicatoreGV);
 			em.persist(tipo4);
 
 			TipologiaEsame tipo5 = new TipologiaEsame("RX","Si esegue la risonanza magnetica a raggi x", 100);
+			tipo5.addPrerequisito(pre2);
+			tipo5.addPrerequisito(pre3);
 			em.persist(tipo5);
 			
 			TipologiaEsame tipo6 = new TipologiaEsame("Tac","Si esegue la radiografia", 70);
@@ -125,26 +128,27 @@ public class FacadeUC1 {
 			p1.addEsame(esame1);
 			m1.addEsame(esame1);
 			em.persist(esame1);
-			em.merge(p1);
-			em.merge(m1);
 
-			Esame esame2 = new Esame(p2,tipo2);    	
+			Esame esame2 = new Esame(p2,tipo2);
+			esame2.setMedico(m1);
 			p2.addEsame(esame2);
 			em.persist(esame2);
-			em.merge(p2);
 
 			Esame esame3 = new Esame(p3,tipo3);
 			esame3.setMedico(m3);
 			p3.addEsame(esame3);
 			m3.addEsame(esame3);
 			em.persist(esame3);
-			em.merge(m3);
-			em.merge(p3);
 
 			Esame esame4 = new Esame(p4,tipo3);
+			esame4.setMedico(m1);
 			p4.addEsame(esame4);
 			em.persist(esame4);
-			em.merge(p4);
+			
+			Esame esame5 = new Esame(p2,tipo5);
+			esame5.setMedico(m2);
+			p2.addEsame(esame5);
+			em.persist(esame5);
 
 			Risultato risultatoA1 = new Risultato(indicatoreA, "0,30");
 			Risultato risultatoA2 = new Risultato(indicatoreA, "0,50");

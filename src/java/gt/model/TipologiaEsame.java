@@ -26,9 +26,9 @@ public class TipologiaEsame {
 	@Column(nullable = false)
 	private float costo;
 	private String descrizione;
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Prerequisito> prerequisiti;
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Indicatore> indicatori;
 	
 	public TipologiaEsame(String nome, String descrizione, float costo) {	

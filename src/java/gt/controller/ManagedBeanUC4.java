@@ -1,7 +1,10 @@
 package gt.controller;
 
-
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -13,9 +16,11 @@ import gt.model.Indicatore;
 import gt.model.Prerequisito;
 import gt.model.TipologiaEsame;
 
-@ManagedBean(name = "managedBeanUC4")
+@ManagedBean(name = "managedBeanUC4", eager = true)
 @RequestScoped
-public class ManagedBeanUC4 {
+public class ManagedBeanUC4 implements Serializable {
+
+	private static final long serialVersionUID = 4L;
 
 	@ManagedProperty("#{costo}")
 	private Float costo;
@@ -31,7 +36,9 @@ public class ManagedBeanUC4 {
 	private TipologiaEsame tipologia;
 	private List<TipologiaEsame> tipologie;
 	private List<Indicatore> indicatori;
+	private Set<Indicatore> indicatoriS;
 	private List<Prerequisito> prerequisiti;
+	private Set<Prerequisito> prerequisitiS;
 	@ManagedProperty("#{idIndicatore1}")
 	private long idIndicatore1;
 	@ManagedProperty("#{idIndicatore2}")
@@ -73,13 +80,26 @@ public class ManagedBeanUC4 {
 		return "associaIndicatoriRequisiti.xhtml";
 	}
 	public String aggiungiIndicatoriRequisiti(){
+		List<Long> idInd = new ArrayList<Long>();
+		if(idIndicatore1!=0L)
+			idInd.add(idIndicatore1); 
+		if(idIndicatore2!=0L)
+			idInd.add(idIndicatore2); 
+		if(idIndicatore3!=0L)
+			idInd.add(idIndicatore3);
+
+		List<Long> idReq = new ArrayList<Long>();
+		if(idPrerequisito1!=0L)
+			idReq.add(idPrerequisito1);
+		if(idPrerequisito2!=0L); 
+			idReq.add(idPrerequisito2); 
+		if(idPrerequisito3!=0L)
+			idReq.add(idPrerequisito3);
+		
+		facade.updateTipologia(idInd, idReq);
 		this.tipologia = facade.trovaTipoEsame(idTipologia);
-		facade.addIndicatoreTipoEsameEsistente(idIndicatore1);
-		facade.addIndicatoreTipoEsameEsistente(idIndicatore2);
-		facade.addIndicatoreTipoEsameEsistente(idIndicatore3);
-		facade.addRequisitoTipoEsameEsistente(idPrerequisito1);
-		facade.addRequisitoTipoEsameEsistente(idPrerequisito2);
-		facade.addRequisitoTipoEsameEsistente(idPrerequisito3);
+		this.setIndicatoriS(new TreeSet<Indicatore>(tipologia.getIndicatori()));
+		this.setPrerequisitiS(new TreeSet<Prerequisito>(tipologia.getPrerequisiti()));
 		return "confermaTipologia.xhtml";
 	}
 
@@ -163,6 +183,14 @@ public class ManagedBeanUC4 {
 		this.indicatori = indicatori;
 	}
 
+	public Set<Indicatore> getIndicatoriS() {
+		return indicatoriS;
+	}
+
+	public void setIndicatoriS(Set<Indicatore> indicatoriS) {
+		this.indicatoriS = indicatoriS;
+	}
+
 	public List<Prerequisito> getPrerequisiti() {
 		return prerequisiti;
 	}
@@ -171,6 +199,14 @@ public class ManagedBeanUC4 {
 		this.prerequisiti = prerequisiti;
 	}
 
+
+	public Set<Prerequisito> getPrerequisitiS() {
+		return prerequisitiS;
+	}
+
+	public void setPrerequisitiS(Set<Prerequisito> prerequisitiS) {
+		this.prerequisitiS = prerequisitiS;
+	}
 
 	public long getIdIndicatore1() {
 		return idIndicatore1;

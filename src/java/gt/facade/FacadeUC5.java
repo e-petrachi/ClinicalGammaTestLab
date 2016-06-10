@@ -5,6 +5,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
+
 import org.apache.log4j.Logger;
 import gt.model.*;
 
@@ -26,6 +28,15 @@ public class FacadeUC5 {
 		return (List<Esame>) query.getResultList();		
 	}
 
+	public List<Medico> anagraficaMedici() {
+		CriteriaQuery<Medico> cq = em.getCriteriaBuilder().createQuery(Medico.class);
+		logger.debug(em);
+		cq.select(cq.from(Medico.class));
+		List<Medico> t = em.createQuery(cq).getResultList();
+		return  t;
+	}
+
 	public EntityManager getEm() {return em;}
+
 	public void setEm(EntityManager em) {this.em = em;}
 }

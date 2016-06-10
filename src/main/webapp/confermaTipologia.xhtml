@@ -63,7 +63,7 @@
 			<div class="l-box pure-u-3-5 is-center">
 
 				<h1 class="dash">
-					<i class="fa fa-plus"></i> Riepilogo Dettaglio Tipologia Esame:
+					<i class="fa fa-plus"></i> Dettaglio Tipologia Esame:
 				</h1>
 			</div>
 			<div class="l-box pure-u-1-5"></div>
@@ -75,7 +75,7 @@
 					<h3>
 						<i class="fa fa-plus-square-o"></i>
 						<h:outputText value="&#160;" />
-						Conferma Nuova Tipologia Esame
+						Riepilogo Tipologia Esame
 					</h3>
 					<table class="pure-table pure-table-bordered font-plus e">
 						<tr>
@@ -100,10 +100,10 @@
 							<td class="red" colspan="2"><i class="fa fa-stethoscope"></i>
 							Prerequisiti</td>
 						</tr>
-						<c:forEach var="requisito" items='${managedBeanUC4.tipologia.prerequisiti}'>
+						<c:forEach var="req" items='${managedBeanUC4.prerequisitiS}'>
 						<tr>
 							<td colspan="2">
-								<h:outputText value="${requisito.codice} " />
+								<h:outputText value="${req.codice} " />
 							</td>
 						</tr>
 					</c:forEach>
@@ -111,7 +111,7 @@
 							<td class="red" colspan="2"><i class="fa fa-plus-square"></i>
 							Indicatori Risultati</td>
 						</tr>
-						<c:forEach var="ind" items='${managedBeanUC4.tipologia.indicatori}'>
+						<c:forEach var="ind" items='${managedBeanUC4.indicatoriS}'>
 						<tr>
 							<td colspan="2">
 								<h:outputText value="${ind.indicatore}" />
@@ -125,6 +125,22 @@
 			<div class="l-box pure-u-1-24"></div>
 		</div>
 		
+		<div class="pure-g">
+			<div class="l-box pure-u-1-5 "></div>
+			<div class="l-box pure-u-3-5 is-center">
+
+				<h1 class="dash grey">
+					<h:form>
+						<i class="fa fa-retweet fa-lg"></i><h:outputText value="&#160;" />
+						<h:commandLink styleClass="pure-link grey"
+							value="Aggiungi ancora Tipologia"
+							action='#{managedBeanUC4.stampaTipiEsame()}' />
+					</h:form>
+
+				</h1>
+			</div>
+			<div class="l-box pure-u-1-5 "></div>
+		</div>
 		
 		
 		<div class="pure-g">

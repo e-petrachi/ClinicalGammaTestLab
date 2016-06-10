@@ -9,24 +9,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 
-<title>GammaTest.LAB | Admin Panel</title>
+<title>GammaTest.LAB | Admin Panel | Ricerca Esami</title>
 
-<link rel="stylesheet" href="css/normalize.css" />
-<link rel="stylesheet" href="css/pure.css" />
-<link rel="stylesheet" href="css/base.css" />
-<link rel="stylesheet" href="css/base-context.css" />
-<link rel="stylesheet" href="css/tables.css" />
-<link rel="stylesheet" href="css/grids.css" />
-<link rel="stylesheet" href="css/grids-units.css" />
-<link rel="stylesheet" href="css/grids-responsive.css" />
-<link rel="stylesheet" href="css/grids-responsive-old-ie.css" />
-<link rel="stylesheet" href="css/grids-core.css" />
-<link rel="stylesheet" href="css/forms.css" />
-<link rel="stylesheet" href="css/forms-nr.css" />
-<link rel="stylesheet" href="css/buttons.css" />
-<link rel="stylesheet" href="css/buttons-core.css" />
-<link rel="stylesheet" href="css/font-awesome.css" />
-<link rel="stylesheet" href="css/layouts/style.css" />
+<link rel="stylesheet" href="css/normalize.css"/>
+<link rel="stylesheet" href="css/pure.css"/>
+<link rel="stylesheet" href="css/base.css"/>
+<link rel="stylesheet" href="css/base-context.css"/>
+<link rel="stylesheet" href="css/tables.css"/>
+<link rel="stylesheet" href="css/grids.css"/>
+<link rel="stylesheet" href="css/grids-units.css"/>
+<link rel="stylesheet" href="css/grids-responsive.css"/>
+<link rel="stylesheet" href="css/grids-responsive-old-ie.css"/>
+<link rel="stylesheet" href="css/grids-core.css"/>
+<link rel="stylesheet" href="css/forms.css"/>
+<link rel="stylesheet" href="css/forms-nr.css"/>
+<link rel="stylesheet" href="css/buttons.css"/>
+<link rel="stylesheet" href="css/buttons-core.css"/>
+<link rel="stylesheet" href="css/font-awesome.css"/>
+<link rel="stylesheet" href="css/layouts/style.css"/>
 
 </head>
 <body>
@@ -54,105 +54,96 @@
 		</h2>
 
 		<div class="pure-g">
-			<div class="is-center l-box pure-u-1">
+			<div class="l-box pure-u-1 is-center">
 				<img class="pure-img-responsive" alt="set" width="700px"
 					src="img/common/type2.jpg" />
 			</div>
-		</div>
-		<div class="pure-g">
+			<div class="l-box pure-u-1-5"></div>
+			<div class="l-box pure-u-3-5 is-center">
 
-			<div class="l-box pure-u-1 is-center">
 				<h1 class="dash">
-
-					<i class="fa fa-medkit"></i> Funzioni Amministrative
-
-
+					<i class="fa fa-plus"></i> Ricerca Esami di un Medico:
 				</h1>
 			</div>
-			
-			<div class="l-box pure-u-1-5 is-center">
-			<h2 class="dash pure-link grey">
-			<i class="fa fa-lg fa-plus"></i>
-			</h2>
+			<div class="l-box pure-u-1-5"></div>
+		</div>
+		<div class="pure-g">
+			<div class="l-box pure-u-1-5"></div>
+			<div class="l-box pure-u-3-5 is-center">
+				<div class="dash">
+					<h3>
+						<i class="fa fa-plus-square-o"></i> <h:outputText value="&#160;" /> 
+						Inserisci i dati del Medico
+					</h3>
+					
+
+					<h:form styleClass="pure-form pure-form-aligned">
+						<div class="pure-u-1 sx">
+
+							<label class="darkgrey font-plus">
+							<h:outputText value="&#160;" /> 
+							<h:outputText value="&#160;" /> NOME</label> 
+							<h:inputText value="#{managedBeanUC5.nome}"
+								styleClass="pure-input ${managedBeanUC5.error1}"/>
+						</div>
+						
+						<div class="pure-u-1 sx">
+							<label class="darkgrey font-plus">
+							<h:outputText value="&#160;" /> 
+							<h:outputText value="&#160;" /> COGNOME</label>
+							<h:inputText value="#{managedBeanUC5.cognome}"
+								styleClass="pure-input ${managedBeanUC5.error2}" />
+						</div>
+						
+						
+						<div class="pure-u-1">
+							<h:commandButton styleClass="pure-button" value="Invia"
+								action="#{managedBeanUC5.trovaEsami()}" />
+						</div>
+
+					</h:form>
+				</div>
 			</div>
-			<div class="l-box pure-u-4-5 is-center">
-				
-				<h2 class="dash">
-				<h:form>
-						<h:outputText value="&#160;" />
-						<h:commandLink styleClass="pure-link grey"
-								value="INSERISCI UN NUOVO ESAME"
-								action='#{managedBeanUC2.stampaTipiEsame()}' />
-				</h:form>
-				</h2>
-				
-			</div>
-			
-			<div class="l-box pure-u-1-5 is-center">
-			<h2 class="dash pure-link grey">
-			<i class="fa fa-lg fa-plus"></i>
-			</h2>
-			</div>
-			<div class="l-box pure-u-4-5 is-center">
-				<h2 class="dash">
-				<h:form>
-						<h:outputText value="&#160;" />
-						<h:commandLink styleClass="pure-link grey"
-								value="INSERISCI UNA NUOVA TIPOLOGIA DI ESAME"
-								action='#{managedBeanUC4.stampaTipiEsame()}' />
-				</h:form>
-				</h2>
-			</div>
-			
-			<div class="l-box pure-u-1-5 is-center">
-			<h2 class="dash pure-link grey">
-			<i class="fa fa-lg fa-plus"></i>
-			</h2>
-			</div>
-			<div class="l-box pure-u-4-5 is-center">
-				<h2 class="dash">
-						<h:outputText value="&#160;" /> 
-				<a class="pure-link grey" href="#">
-						INSERISCI UN NUOVO PAZIENTE
-				</a>
-				</h2>
-			</div>
-			
-			<div class="l-box pure-u-1-5 is-center">
-			<h2 class="dash pure-link grey">
-			<i class="fa fa-lg fa-search-plus"></i>
-			</h2>
-			</div>
-			<div class="l-box pure-u-4-5 is-center">
-				<h2 class="dash">
-				<h:form>
-						<h:outputText value="&#160;" />
-						<h:commandLink styleClass="pure-link grey"
-								value="RICERCA GLI ESAMI EFFETTUATI DA UN MEDICO"
-								action='#{managedBeanUC5.consultaAnagraficaMedici()}' />
-				</h:form>
-				</h2>
-			</div>
-			
-			<div class="l-box pure-u-1-5 is-center">
-			<h2 class="dash pure-link grey">
-			<i class="fa fa-lg fa-plus"></i>
-			</h2>
-			</div>
-			<div class="l-box pure-u-4-5 is-center">
-				<h2 class="dash">
-						<h:outputText value="&#160;" /> 
-				<a class="pure-link grey" href="#">
-						INSERISCI UN RISULTATO DI UN ESAME
-				</a>
-				</h2>
-			</div>
-			
-			
-			
-			
+			<div class="l-box pure-u-1-5"></div>
+		</div>
+		<div class="pure-g">
+			<!-- QUI LA LISTA DEI MEDICI -->
+		<div class="l-box pure-u-1-5"></div>
+		<div class="l-box pure-u-3-5">
+		
+				<table class="pure-table pure-table-bordered font-plus e">
+					<thead>
+					<tr class="is-center red">
+						<th colspan="4"><i class="fa fa-table"></i> Anagrafica Medici</th>
+					</tr>
+						<tr class="is-center">
+							<th>ID</th>
+							<th>Nome</th>
+							<th>Cognome</th>
+							<th>Specializzazione</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<c:forEach var="med" items='${managedBeanUC5.medici}'>
+							<tr>
+								<td><h:outputText value="${med.id}" /></td>
+								<td><h:outputText value="${med.nome}" /></td>
+								<td><h:outputText value="${med.cognome}" /></td>
+								<td><h:outputText value="${med.specializzazione}" /></td>
+							</tr>
+						</c:forEach>
+						
+					</tbody>
+				</table>
+				</div>
+			<div class="l-box pure-u-1-5"></div>
+		
+
 
 		</div>
+
+
 
 		<h2 class="is-center content-head black">
 			<br></br>More INFORMATION<br></br>

@@ -23,7 +23,7 @@ public class Prerequisito implements Comparable<Prerequisito>{
 	private long id;
 	private String codice;
 	private String valore;
-	@ManyToMany(mappedBy = "prerequisiti", cascade = CascadeType.MERGE)
+	@ManyToMany(mappedBy = "prerequisiti")
 	private List<TipologiaEsame> tipiEsame;
 	
 	public Prerequisito(String codice, String valore) {	
@@ -34,8 +34,8 @@ public class Prerequisito implements Comparable<Prerequisito>{
 	public Prerequisito(){
 		this.tipiEsame=new ArrayList<TipologiaEsame>();
 	}
-	public Long getId() {return id;}
-	public void setId(Long id) {this.id = id;}
+	public long getId() {return id;}
+	public void setId(long id) {this.id = id;}
 	public String getCodice() {return codice;}
 	public void setCodice(String nome) {this.codice = nome;}
 	public String getValore() {return valore;}

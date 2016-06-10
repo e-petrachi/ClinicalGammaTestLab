@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Medico {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private long id;
 	@Column(nullable = false)
 	private String nome;
 	@Column(nullable = false)
@@ -24,11 +24,17 @@ public class Medico {
 		this.cognome = cognome;
 		this.esami = new ArrayList<Esame>();
 	}
+	public Medico(String nome,String cognome,String specializzazione){
+		this.nome = nome;
+		this.cognome = cognome;
+		this.specializzazione = specializzazione;
+		this.esami = new ArrayList<Esame>();
+	}
 	public Medico(){
 		this.esami = new ArrayList<Esame>();
 	}
-	public Long getId() {return id;}
-	public void setId(Long id) {this.id = id;}
+	public long getId() {return id;}
+	public void setId(long id) {this.id = id;}
 	public List<Esame> getEsami() {return esami;}
 	public void addEsame(Esame e){this.esami.add(e);}
 	public String getNome() {return nome;}
@@ -37,4 +43,13 @@ public class Medico {
 	public void setCognome(String cognome) {this.cognome = cognome;}
 	public String getSpecializzazione() {return specializzazione;}
 	public void setSpecializzazione(String specializzazione) {this.specializzazione = specializzazione;}
+	@Override
+	public int hashCode() {
+		return (int)this.id;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		Medico other = (Medico) obj;
+		return this.id == other.getId();
+	}
 }

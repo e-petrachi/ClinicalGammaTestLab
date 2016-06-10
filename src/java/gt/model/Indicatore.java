@@ -19,9 +19,9 @@ public class Indicatore implements Comparable<Indicatore>{
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)	
-	private Long id;
+	private long id;
 	private String indicatore;
-	@ManyToMany(mappedBy="indicatori", cascade = CascadeType.MERGE)
+	@ManyToMany(mappedBy="indicatori")
 	private List<TipologiaEsame> tipologieEsame;
 	
 	public Indicatore(){
@@ -42,7 +42,7 @@ public class Indicatore implements Comparable<Indicatore>{
 	public void setTipiEsame(List<TipologiaEsame> tipiEsame) {this.tipologieEsame = tipiEsame;}
 	@Override
 	public int hashCode() {
-		return this.id.intValue();
+		return (int)this.id;
 	}
 	@Override
 	public boolean equals(Object obj) {

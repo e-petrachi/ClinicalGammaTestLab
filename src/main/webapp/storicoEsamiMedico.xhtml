@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 
-<title>GammaTest.LAB | Admin Panel</title>
+<title>GammaTest.LAB | Admin Panel | Storico Esami Medico</title>
 
 <link rel="stylesheet" href="css/normalize.css" />
 <link rel="stylesheet" href="css/pure.css" />
@@ -54,105 +54,98 @@
 		</h2>
 
 		<div class="pure-g">
-			<div class="is-center l-box pure-u-1">
+			<div class="l-box pure-u-1 is-center">
 				<img class="pure-img-responsive" alt="set" width="700px"
 					src="img/common/type2.jpg" />
 			</div>
+			<div class="l-box pure-u-1-5"></div>
+			<div class="l-box pure-u-3-5 is-center">
+
+				<h1 class="dash">
+					<i class="fa fa-search-plus"></i> Ricerca Esami Medico:
+				</h1>
+			</div>
+			<div class="l-box pure-u-1-5"></div>
 		</div>
 		<div class="pure-g">
+			<div class="l-box pure-u-1-24"></div>
+			<div class="l-box pure-u-22-24 is-center">
+				<div class="dash">
+					<h3>
+						<i class="fa fa-check-square-o"></i>
+						<h:outputText value="&#160;" />
+						Riepilogo Esami Effettuati
+					</h3>
+					<table class="pure-table pure-table-bordered font-plus e">
+						<tr class="pure-table-odd">
+							<td class="grey"> Medico</td>
+							<td><h:outputText value="${managedBeanUC5.nome}" /> </td>
+							<td><h:outputText value="${managedBeanUC5.cognome}" /></td>
+						</tr>
+						
+						<tr>
+							<td class="red" colspan="3"><i class="fa fa-medkit"></i>
+							Esami</td>
+						</tr>
+						<tr>
+							<td class="grey">ID Esame</td>
+							<td class="grey">Paziente</td>
+							<td class="grey">Tipologia</td>
+						</tr>
+						<c:forEach var="esa" items='${managedBeanUC5.esami}'>
+						<tr class="pure-table-odd">
+							<td>
+								<h:outputText value="${esa.id} " />
+							</td>
+							<td>
+								<h:outputText value="${esa.paziente.nome} " />
+								<h:outputText value="${esa.paziente.cognome} " />
+							</td>
+							<td>
+								<h:outputText value="${esa.tipologiaEsame.nome} " />
+							</td>
+						</tr>
+					</c:forEach>
+						
+					</table>
+				</div>
+			</div>
+			<div class="l-box pure-u-1-24"></div>
+		</div>
+		
+		<div class="pure-g">
+			<div class="l-box pure-u-1-5 "></div>
+			<div class="l-box pure-u-3-5 is-center">
 
-			<div class="l-box pure-u-1 is-center">
-				<h1 class="dash">
-
-					<i class="fa fa-medkit"></i> Funzioni Amministrative
-
+				<h1 class="dash grey">
+					<h:form>
+						<i class="fa fa-retweet fa-lg"></i><h:outputText value="&#160;" />
+						<h:commandLink styleClass="pure-link grey"
+							value="Cerca un'altro Medico"
+							action='#{managedBeanUC5.consultaAnagraficaMedici()}' />
+					</h:form>
 
 				</h1>
 			</div>
-			
-			<div class="l-box pure-u-1-5 is-center">
-			<h2 class="dash pure-link grey">
-			<i class="fa fa-lg fa-plus"></i>
-			</h2>
-			</div>
-			<div class="l-box pure-u-4-5 is-center">
-				
-				<h2 class="dash">
-				<h:form>
-						<h:outputText value="&#160;" />
-						<h:commandLink styleClass="pure-link grey"
-								value="INSERISCI UN NUOVO ESAME"
-								action='#{managedBeanUC2.stampaTipiEsame()}' />
-				</h:form>
-				</h2>
-				
-			</div>
-			
-			<div class="l-box pure-u-1-5 is-center">
-			<h2 class="dash pure-link grey">
-			<i class="fa fa-lg fa-plus"></i>
-			</h2>
-			</div>
-			<div class="l-box pure-u-4-5 is-center">
-				<h2 class="dash">
-				<h:form>
-						<h:outputText value="&#160;" />
-						<h:commandLink styleClass="pure-link grey"
-								value="INSERISCI UNA NUOVA TIPOLOGIA DI ESAME"
-								action='#{managedBeanUC4.stampaTipiEsame()}' />
-				</h:form>
-				</h2>
-			</div>
-			
-			<div class="l-box pure-u-1-5 is-center">
-			<h2 class="dash pure-link grey">
-			<i class="fa fa-lg fa-plus"></i>
-			</h2>
-			</div>
-			<div class="l-box pure-u-4-5 is-center">
-				<h2 class="dash">
-						<h:outputText value="&#160;" /> 
-				<a class="pure-link grey" href="#">
-						INSERISCI UN NUOVO PAZIENTE
-				</a>
-				</h2>
-			</div>
-			
-			<div class="l-box pure-u-1-5 is-center">
-			<h2 class="dash pure-link grey">
-			<i class="fa fa-lg fa-search-plus"></i>
-			</h2>
-			</div>
-			<div class="l-box pure-u-4-5 is-center">
-				<h2 class="dash">
-				<h:form>
-						<h:outputText value="&#160;" />
-						<h:commandLink styleClass="pure-link grey"
-								value="RICERCA GLI ESAMI EFFETTUATI DA UN MEDICO"
-								action='#{managedBeanUC5.consultaAnagraficaMedici()}' />
-				</h:form>
-				</h2>
-			</div>
-			
-			<div class="l-box pure-u-1-5 is-center">
-			<h2 class="dash pure-link grey">
-			<i class="fa fa-lg fa-plus"></i>
-			</h2>
-			</div>
-			<div class="l-box pure-u-4-5 is-center">
-				<h2 class="dash">
-						<h:outputText value="&#160;" /> 
-				<a class="pure-link grey" href="#">
-						INSERISCI UN RISULTATO DI UN ESAME
-				</a>
-				</h2>
-			</div>
-			
-			
-			
-			
-
+			<div class="l-box pure-u-1-5 "></div>
 		</div>
+		
+		<div class="pure-g">
+			<div class="l-box pure-u-1-5 "></div>
+			<div class="l-box pure-u-3-5 is-center">
+
+				<h1 class="dash grey">
+
+					<i class="fa fa-user-md fa-lg"></i>
+					<h:outputText value="&#160;" />
+					<a href="funAmministratore.xhtml" class="pure-link grey">Ritorna
+						al Menu Admin</a>
+
+				</h1>
+			</div>
+			<div class="l-box pure-u-1-5 "></div>
+		</div>
+
 
 		<h2 class="is-center content-head black">
 			<br></br>More INFORMATION<br></br>
