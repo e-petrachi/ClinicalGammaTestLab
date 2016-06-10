@@ -152,7 +152,7 @@ public class FacadeUC1 {
 			em.merge(m3);
 			em.merge(p3);
 
-			Esame esame4 = new Esame(p4,tipo4);
+			Esame esame4 = new Esame(p4,tipo3);
 			p4.addEsame(esame4);
 			em.persist(esame4);
 			em.merge(p4);

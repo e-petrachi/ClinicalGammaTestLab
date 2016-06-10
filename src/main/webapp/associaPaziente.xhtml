@@ -79,13 +79,19 @@
 
 
 					<h:form styleClass="pure-form pure-form-aligned">
-						<div class="pure-u-1">
+						<div class="pure-u-1 sx">
 
-							<h:inputText value="${managedBeanUC2.tipo}"
-								styleClass="pure-input" readonly="true"/>
+							<label class="darkgrey font-plus">
+							<h:outputText value="&#160;" /> 
+							<h:outputText value="&#160;" /> ID TIPOLOGIA ESAME</label> 
+							<h:inputText value="#{managedBeanUC2.tipo}"
+								styleClass="pure-input readonly"/>
 						</div>
-						<div class="pure-u-1">
-
+						
+						<div class="pure-u-1 sx">
+							<label class="darkgrey font-plus">
+							<h:outputText value="&#160;" /> 
+							<h:outputText value="&#160;" /> USER PAZIENTE</label>
 							<h:inputText value="#{managedBeanUC2.paziente}"
 								styleClass="pure-input" />
 						</div>

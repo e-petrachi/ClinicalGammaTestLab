@@ -37,7 +37,9 @@ h1, h2, h3, h4, h5, h6, label {
 .pure-link:hover {
 	color: #ffcc00;
 }
-
+.sx{
+	text-align: left;
+}
 .black {
 	color: #000;
 }
@@ -45,7 +47,9 @@ h1, h2, h3, h4, h5, h6, label {
 .grey {
 	color: #999999;
 }
-
+.darkgrey {
+	color: #666666;
+}
 .red {
 	color: #ff3333;
 }
@@ -117,7 +121,12 @@ table.e {
 	width: 100%;
 	margin-bottom: 1em;
 }
-
+.pure-form .readonly {
+    background-color: #eee; /* menu hover bg color */
+    color: #777; /* menu text color */
+    border-color: #ccc;
+    cursor: default;
+}
 /*
  * -- PURE BUTTON STYLES --
  * I want my pure-button elements to look a little different

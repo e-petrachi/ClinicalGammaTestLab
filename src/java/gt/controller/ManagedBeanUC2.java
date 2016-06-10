@@ -7,15 +7,17 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 
 import gt.facade.FacadeUC2;
 import gt.model.*;
 
 @ManagedBean(name = "managedBeanUC2")
+@RequestScoped
 public class ManagedBeanUC2 implements Serializable {
 
 	private static final long serialVersionUID = 3L;
-	
+
 	@ManagedProperty("#{tipo}")
 	private long tipo;
 	@ManagedProperty("#{paziente}")
@@ -25,23 +27,26 @@ public class ManagedBeanUC2 implements Serializable {
 	private Esame esame;
 	private List<TipologiaEsame> tipologie;
 	private List<Paziente> pazienti;
-	
+
 	@EJB(beanName="facadeUC2")
 	private FacadeUC2 facade;
-	
+
 	public ManagedBeanUC2(){}
-	
+
 	public String stampaTipiEsame(){
 		this.setTipologie(facade.consultaOfferta());
 		return "inserisciEsame.xhtml";
 	} 
 	public String creaEsame(){	
 		this.setPazienti(facade.getPazienti());
-		if(facade.trovaTipoEsame(tipo)==null) {return "index.xhtml";}
+		if(facade.trovaTipoEsame(tipo)==null) {
+			return "index.xhtml";
+		}
 		this.setT(facade.trovaTipoEsame(tipo));
 		return "associaPaziente.xhtml";
 	}
 	public String associaEsame(){	
+		this.setT(facade.trovaTipoEsame(tipo));
 		this.setP(facade.trovaPaziente(paziente));	
 		Esame e = facade.creaEsame(p,t);
 		if(e==null) return "erroreInserimentoEsame.xhtml";
@@ -67,6 +72,6 @@ public class ManagedBeanUC2 implements Serializable {
 	public void setP(Paziente p) {this.p = p;}
 	public TipologiaEsame getT() {return t;}
 	public void setT(TipologiaEsame t) {this.t = t;}
-	
-	
+
+
 }
