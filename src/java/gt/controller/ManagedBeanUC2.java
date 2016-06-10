@@ -27,6 +27,7 @@ public class ManagedBeanUC2 implements Serializable {
 	private Esame esame;
 	private List<TipologiaEsame> tipologie;
 	private List<Paziente> pazienti;
+	private String error;
 
 	@EJB(beanName="facadeUC2")
 	private FacadeUC2 facade;
@@ -40,13 +41,20 @@ public class ManagedBeanUC2 implements Serializable {
 	public String creaEsame(){	
 		this.setPazienti(facade.getPazienti());
 		if(facade.trovaTipoEsame(tipo)==null) {
-			return "index.xhtml";
+			this.error = "error";
+			this.setTipologie(facade.consultaOfferta());
+			return "inserisciEsame.xhtml";
 		}
 		this.setT(facade.trovaTipoEsame(tipo));
 		return "associaPaziente.xhtml";
 	}
 	public String associaEsame(){	
 		this.setT(facade.trovaTipoEsame(tipo));
+		if(facade.trovaPaziente(paziente)==null) {
+			this.error = "error";
+			this.setPazienti(facade.getPazienti());
+			return "associaPaziente.xhtml";
+		}
 		this.setP(facade.trovaPaziente(paziente));	
 		Esame e = facade.creaEsame(p,t);
 		if(e==null) return "erroreInserimentoEsame.xhtml";
@@ -72,6 +80,14 @@ public class ManagedBeanUC2 implements Serializable {
 	public void setP(Paziente p) {this.p = p;}
 	public TipologiaEsame getT() {return t;}
 	public void setT(TipologiaEsame t) {this.t = t;}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
 
 
 }

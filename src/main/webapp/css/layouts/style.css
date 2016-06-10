@@ -36,6 +36,12 @@ h1, h2, h3, h4, h5, h6, label {
 
 .pure-link:hover {
 	color: #ffcc00;
+	text-shadow: 1px 1px 0px #666;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+}
+.is-center {
+	text-align: center;
 }
 .sx{
 	text-align: left;
@@ -86,10 +92,6 @@ table.e {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.is-center {
-	text-align: center;
-}
-
 .dash {
 	border: 1px solid #FFF;
 	padding: 20px;
@@ -114,7 +116,7 @@ table.e {
 	font-size: 100%;
 }
 
-.pure-form input[type] {
+.pure-form input[type] , .pure-form textarea{
 	border: 2px solid #ddd;
 	box-shadow: none;
 	font-size: 100%;
@@ -126,6 +128,11 @@ table.e {
     color: #777; /* menu text color */
     border-color: #ccc;
     cursor: default;
+}
+.pure-form .error {
+	background-color: #ffff99;
+    text-decoration: underline;
+    color: #800040;
 }
 /*
  * -- PURE BUTTON STYLES --

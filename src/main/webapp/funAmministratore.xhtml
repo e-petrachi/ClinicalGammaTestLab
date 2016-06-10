@@ -95,9 +95,25 @@
 			</div>
 			<div class="l-box pure-u-4-5 is-center">
 				<h2 class="dash">
+				<h:form>
+						<h:outputText value="&#160;" />
+						<h:commandLink styleClass="pure-link grey"
+								value="INSERISCI UNA NUOVA TIPOLOGIA DI ESAME"
+								action='#{managedBeanUC4.stampaTipiEsame()}' />
+				</h:form>
+				</h2>
+			</div>
+			
+			<div class="l-box pure-u-1-5 is-center">
+			<h2 class="dash pure-link grey">
+			<i class="fa fa-lg fa-plus"></i>
+			</h2>
+			</div>
+			<div class="l-box pure-u-4-5 is-center">
+				<h2 class="dash">
 						<h:outputText value="&#160;" /> 
-				<a class="pure-link grey" href="inserisciTipologia.xhtml">
-						INSERISCI UNA NUOVA TIPOLOGIA DI ESAME
+				<a class="pure-link grey" href="inserisciPaziente.xhtml">
+						INSERISCI UN NUOVO PAZIENTE
 				</a>
 				</h2>
 			</div>

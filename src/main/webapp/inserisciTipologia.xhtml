@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 
-<title>GammaTest.LAB | Admin Panel | Conferma Creazione Esame</title>
+<title>GammaTest.LAB | Admin Panel | Inserisci Nuova Tipologia Esame</title>
 
 <link rel="stylesheet" href="css/normalize.css"/>
 <link rel="stylesheet" href="css/pure.css"/>
@@ -62,7 +62,7 @@
 			<div class="l-box pure-u-3-5 is-center">
 
 				<h1 class="dash">
-					<i class="fa fa-plus"></i> Riepilogo Esame:
+					<i class="fa fa-plus"></i> Inserimento di una Nuova Tipologia d'Esame:
 				</h1>
 			</div>
 			<div class="l-box pure-u-1-5"></div>
@@ -73,63 +73,82 @@
 				<div class="dash">
 					<h3>
 						<i class="fa fa-plus-square-o"></i> <h:outputText value="&#160;" /> 
-						Conferma Nuovo Esame  
+						Inserisci i dati della nuova Tipologia d'Esame
 					</h3>
-					<table class="pure-table pure-table-bordered font-plus e">
-					<tr>
-						<td class="grey"># Esame</td>
-						<td> <h:outputText
-								value="${managedBeanUC2.esame.id}" /></td>
-					</tr>
-					<tr  class="pure-table-odd">
-						<td class="grey">Data di Prenotazione</td>
-						<td><h:outputText value="${managedBeanUC2.esame.dataprenotazione}" /></td>
-					</tr>
-					<tr>
-						<td class="grey">Tipologia</td>
-						<td><h:outputText value="&#160;" /><h:outputText
-								value="${managedBeanUC2.esame.tipologiaEsame.nome}" /></td>
-					</tr>
-					<tr  class="pure-table-odd">
-						<td class="grey">Paziente</td>
-						<td><h:outputText
-								value="${managedBeanUC2.esame.paziente.username}" /></td>
-					</tr>
-				</table>
+					
+
+					<h:form styleClass="pure-form pure-form-aligned">
+						<div class="pure-u-1 sx">
+
+							<label class="darkgrey font-plus">
+							<h:outputText value="&#160;" /> 
+							<h:outputText value="&#160;" /> NOME TIPOLOGIA</label> 
+							<h:inputText value="#{managedBeanUC4.nome}"
+								styleClass="pure-input ${managedBeanUC4.error1}"/>
+						</div>
+						
+						<div class="pure-u-1 sx">
+							<label class="darkgrey font-plus">
+							<h:outputText value="&#160;" /> 
+							<h:outputText value="&#160;" /> COSTO TIPOLOGIA</label>
+							<h:inputText value="#{managedBeanUC4.costo}"
+								styleClass="pure-input ${managedBeanUC4.error2}" />
+						</div>
+						
+						<div class="pure-u-1 sx">
+						
+							<label class="darkgrey font-plus">
+							<h:outputText value="&#160;" /> 
+							<h:outputText value="&#160;" /> DESCRIZIONE TIPOLOGIA</label>
+							<h:inputTextarea value="#{managedBeanUC4.descrizione}"
+								styleClass="pure-input pure-input-1" />
+						
+						</div>
+						<div class="pure-u-1">
+							<h:commandButton styleClass="pure-button" value="Invia"
+								action="#{managedBeanUC4.creaTipologiaEsame()}" />
+						</div>
+
+					</h:form>
 				</div>
 			</div>
 			<div class="l-box pure-u-1-5"></div>
 		</div>
 		<div class="pure-g">
-			<div class="l-box pure-u-1-5 "></div>
-			<div class="l-box pure-u-3-5 is-center">
+			<!-- QUI LA LISTA DELLE TIPOLOGIE DI ESAMI -->
+<div class="l-box pure-u-1-5"></div>
+		<div class="l-box pure-u-3-5">
+		
+				<table class="pure-table pure-table-bordered font-plus e">
+					<thead>
+					<tr class="is-center red">
+						<th colspan="4"><i class="fa fa-table"></i> Riepilogo Tipologie Esami</th>
+					</tr>
+						<tr class="is-center">
+							<th>Nome</th>
+							<th>Costo</th>
+							<th colspan="2">Descrizione</th>
+						</tr>
+					</thead>
+					<tbody>
 
-				<h1 class="dash grey">
-					<h:form>
-						<i class="fa fa-retweet fa-lg"></i><h:outputText value="&#160;" />
-						<h:commandLink styleClass="pure-link grey"
-							value="Aggiungi un altro Esame"
-							action='#{managedBeanUC2.stampaTipiEsame()}' />
-					</h:form>
+						<c:forEach var="tipo" items='${managedBeanUC4.tipologie}'>
+							<tr>
+								<td><h:outputText value="${tipo.nome}" /></td>
+								<td><i class="fa fa-eur"></i> <h:outputText value="&#160;" /> <h:outputText value="${tipo.costo}" /></td>
+								<td colspan="2"><h:outputText value="${tipo.descrizione}" /></td>
+							</tr>
+						</c:forEach>
+						
+					</tbody>
+				</table>
+				</div>
+			<div class="l-box pure-u-1-5"></div>
+		
 
-				</h1>
-			</div>
-			<div class="l-box pure-u-1-5 "></div>
+
 		</div>
 
-		<div class="pure-g">
-			<div class="l-box pure-u-1-5 "></div>
-			<div class="l-box pure-u-3-5 is-center">
-
-				<h1 class="dash grey">
-					
-						<i class="fa fa-user-md fa-lg"></i><h:outputText value="&#160;" />
-						<a href="funAmministratore.xhtml" class="pure-link grey">Ritorna al Menu Admin</a>
-
-				</h1>
-			</div>
-			<div class="l-box pure-u-1-5 "></div>
-		</div>
 
 
 		<h2 class="is-center content-head black">
