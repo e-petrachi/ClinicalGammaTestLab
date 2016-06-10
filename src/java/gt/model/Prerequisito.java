@@ -3,7 +3,15 @@ package gt.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "prequisito")
@@ -15,7 +23,7 @@ public class Prerequisito implements Comparable<Prerequisito>{
 	private long id;
 	private String codice;
 	private String valore;
-	@ManyToMany(mappedBy = "prerequisiti")
+	@ManyToMany(mappedBy = "prerequisiti", cascade = CascadeType.MERGE)
 	private List<TipologiaEsame> tipiEsame;
 	
 	public Prerequisito(String codice, String valore) {	

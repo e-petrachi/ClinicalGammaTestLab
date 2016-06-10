@@ -1,7 +1,16 @@
 package gt.model;
 
 import java.util.*;
-import javax.persistence.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "indicatore")
@@ -12,7 +21,7 @@ public class Indicatore implements Comparable<Indicatore>{
 	@GeneratedValue(strategy = GenerationType.AUTO)	
 	private Long id;
 	private String indicatore;
-	@ManyToMany(mappedBy="indicatori")
+	@ManyToMany(mappedBy="indicatori", cascade = CascadeType.MERGE)
 	private List<TipologiaEsame> tipologieEsame;
 	
 	public Indicatore(){

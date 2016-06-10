@@ -5,6 +5,7 @@ import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,9 +26,9 @@ public class TipologiaEsame {
 	@Column(nullable = false)
 	private float costo;
 	private String descrizione;
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private List<Prerequisito> prerequisiti;
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private List<Indicatore> indicatori;
 	
 	public TipologiaEsame(String nome, String descrizione, float costo) {	

@@ -100,7 +100,7 @@
 							<td class="red" colspan="2"><i class="fa fa-stethoscope"></i>
 							Prerequisiti</td>
 						</tr>
-						<c:forEach var="requisito" items='${managedBeanUC4.prerequisiti}'>
+						<c:forEach var="requisito" items='${managedBeanUC4.tipologia.prerequisiti}'>
 						<tr>
 							<td colspan="2">
 								<h:outputText value="${requisito.codice} " />
@@ -111,7 +111,7 @@
 							<td class="red" colspan="2"><i class="fa fa-plus-square"></i>
 							Indicatori Risultati</td>
 						</tr>
-						<c:forEach var="ind" items='${managedBeanUC4.indicatori}'>
+						<c:forEach var="ind" items='${managedBeanUC4.tipologia.indicatori}'>
 						<tr>
 							<td colspan="2">
 								<h:outputText value="${ind.indicatore}" />

@@ -96,16 +96,11 @@ public class FacadeUC1 {
 			tipo1.addIndicatore(indicatoreC);
 			tipo1.addIndicatore(indicatoreE);
 			em.persist(tipo1);
-			em.merge(pre1);
-			em.merge(indicatoreC);
-			em.merge(indicatoreE);
-
+		
 			TipologiaEsame tipo2 = new TipologiaEsame("Urine","Si esegue l'esame delle urine", 50);
 			tipo2.addPrerequisito(pre4);
 			tipo2.addIndicatore(indicatoreC);
 			em.persist(tipo2);
-			em.merge(pre4);
-			em.merge(indicatoreC);
 
 			TipologiaEsame tipo3 = new TipologiaEsame("Sangue","Si esegue l'esame del sangue", 80);
 			tipo3.addPrerequisito(pre3);
@@ -114,16 +109,10 @@ public class FacadeUC1 {
 			tipo3.addIndicatore(indicatoreA);
 			tipo3.addIndicatore(indicatoreE);
 			em.persist(tipo3);
-			em.merge(pre3);
-			em.merge(pre1);
-			em.merge(pre4);
-			em.merge(indicatoreA);
-			em.merge(indicatoreE);
 
 			TipologiaEsame tipo4 = new TipologiaEsame("Vista","Si esegue l'esame della vista", 20);
 			tipo4.addIndicatore(indicatoreGV);
 			em.persist(tipo4);
-			em.merge(indicatoreGV);
 
 			TipologiaEsame tipo5 = new TipologiaEsame("RX","Si esegue la risonanza magnetica a raggi x", 100);
 			em.persist(tipo5);

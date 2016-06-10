@@ -40,16 +40,14 @@ public class FacadeUC4 {
 	public Prerequisito addRequisitoTipoEsame(String key,String value){
 		Prerequisito p = new Prerequisito(key,value);
 		p.addTipoEsame(tipoEsame);
-		em.persist(p);
 		tipoEsame.addPrerequisito(p);
-		em.merge(tipoEsame);
+		em.persist(p);
 		return p;
 	}
 	public Prerequisito addRequisitoTipoEsameEsistente(long id){
 		Prerequisito p = em.find(Prerequisito.class, id);
 		p.addTipoEsame(tipoEsame);
 		tipoEsame.addPrerequisito(p);
-		em.merge(p);
 		em.merge(tipoEsame);
 		return p;
 	}
@@ -57,16 +55,14 @@ public class FacadeUC4 {
 	public Indicatore addIndicatoreTipoEsame(String indicatore){
 		Indicatore i = new Indicatore(indicatore);
 		i.addTipoEsame(tipoEsame);
-		em.persist(i);
 		tipoEsame.addIndicatore(i);
-		em.merge(tipoEsame);
+		em.persist(i);
 		return i;
 	}
 	public Indicatore addIndicatoreTipoEsameEsistente(long id){
 		Indicatore i = em.find(Indicatore.class, id);
 		i.addTipoEsame(tipoEsame);
 		tipoEsame.addIndicatore(i);
-		em.merge(i);
 		em.merge(tipoEsame);
 		return i;
 	}

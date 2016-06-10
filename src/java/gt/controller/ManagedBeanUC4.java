@@ -80,11 +80,6 @@ public class ManagedBeanUC4 {
 		facade.addRequisitoTipoEsameEsistente(idPrerequisito1);
 		facade.addRequisitoTipoEsameEsistente(idPrerequisito2);
 		facade.addRequisitoTipoEsameEsistente(idPrerequisito3);
-		this.indicatori = facade.getIndicatoriTipologia(idTipologia);
-		this.prerequisiti = facade.getPrerequisitiTipologia(idTipologia);
-		return "confermaTipologia.xhtml";
-	}
-	public String aggiungiRequisiti(){
 		return "confermaTipologia.xhtml";
 	}
 
