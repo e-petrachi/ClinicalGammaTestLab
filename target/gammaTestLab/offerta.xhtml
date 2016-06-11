@@ -1,25 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content=""/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
 
 <title>GammaTest.LAB | Test Details</title>
 
-<link rel="stylesheet" href="css/pure.css"/>
-<link rel="stylesheet" href="css/grids-responsive-min.css"/>
-<link rel="stylesheet" href="css/font-awesome.css"/>
-<link rel="stylesheet" href="css/layouts/style.css"/>
-
+<link rel="stylesheet" href="css/normalize.css" />
+<link rel="stylesheet" href="css/pure.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/base-context.css" />
+<link rel="stylesheet" href="css/tables.css" />
+<link rel="stylesheet" href="css/grids.css" />
+<link rel="stylesheet" href="css/grids-units.css" />
+<link rel="stylesheet" href="css/grids-responsive.css" />
+<link rel="stylesheet" href="css/grids-responsive-old-ie.css" />
+<link rel="stylesheet" href="css/grids-core.css" />
+<link rel="stylesheet" href="css/forms.css" />
+<link rel="stylesheet" href="css/forms-nr.css" />
+<link rel="stylesheet" href="css/buttons.css" />
+<link rel="stylesheet" href="css/buttons-core.css" />
+<link rel="stylesheet" href="css/font-awesome.css" />
+<link rel="stylesheet" href="css/layouts/style.css" />
 
 </head>
 <body>
 
 	<div class="header">
 		<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-			<img class="pure-menu-heading" alt="logoMicro" src="img/logoXSr.png"/>
+			<img class="pure-menu-heading" alt="logoMicro" src="img/logoXSr.png" />
 			<a class="pure-menu-heading" href="#">Gamma Test</a>
 
 			<ul class="pure-menu-list">
@@ -42,31 +56,91 @@
 		<div class="pure-g">
 			<div class="is-center l-box pure-u-1">
 				<img class="pure-img-responsive" alt="set" width="700px"
-					src="img/common/type1.jpg"/>
+					src="img/common/type1.jpg" />
 			</div>
-			<div class="is-center l-box pure-u-1">
 
-				<h1 class="is-center dash">
-					<i class="fa fa-flask"></i> &nbsp; Dettaglio della Tipologia di Esame selezionata:
+			<div class="l-box pure-u-1 is-center">
+
+				<h1 class="dash">
+					<i class="fa fa-flask"></i> Dettaglio della Tipologia di Esame:
 				</h1>
 			</div>
-			<div class="is-center l-box pure-u-1">
-
-				<!-- QUI IL DETTAGLIO ESAME -->
-				<f:view>
-				<h1><h:outputText value="#{managedBeanUC1.tipologia.nome}"/></h1>
-				<h2>Details</h2>
-				<div><p>Code: <h:outputText value="#{managedBeanUC1.tipologia.id}"/></p>
-				<p>Price: <h:outputText value="#{managedBeanUC1.tipologia.costo}"/></p>
-				<p>Description: <h:outputText value="#{managedBeanUC1.tipologia.descrizione}"/></p>
-				<f:view>
-				</div>
-				
-				
-			</div>
-
 
 		</div>
+		<div class="pure-g">
+			<div class="pure-u-1-5 l-box "></div>
+			<div class="is-center l-box pure-u-3-5 ">
+
+
+				<!-- QUI IL DETTAGLIO ESAME -->
+				<table class="pure-table pure-table-bordered font-plus e">
+					<tr>
+						<td class="grey">Nome</td>
+						<td>Esame <h:outputText
+								value="#{managedBeanUC1.tipologia.nome}" /></td>
+					</tr>
+					<tr class="pure-table-odd">
+						<td class="red" colspan="2"><i class="fa fa-info-circle"></i>
+							Dettaglio Esame</td>
+					</tr>
+					<tr>
+						<td class="grey">Codice</td>
+						<td><h:outputText value="#{managedBeanUC1.tipologia.id}" /></td>
+					</tr>
+					<tr class="pure-table-odd">
+						<td class="grey">Costo</td>
+						<td><i class="fa fa-eur"></i> <h:outputText value="&#160;" /><h:outputText
+								value="#{managedBeanUC1.tipologia.costo}" /></td>
+					</tr>
+					<tr>
+						<td class="grey">Descrizione</td>
+						<td><h:outputText
+								value="#{managedBeanUC1.tipologia.descrizione}" /></td>
+					</tr>
+					<tr class="pure-table-odd">
+						<td class="red" colspan="2"><i class="fa fa-stethoscope"></i>
+							Prerequisiti</td>
+					</tr>
+					<c:forEach var="requisito" items='${managedBeanUC1.prerequisiti}'>
+						<tr>
+							<td colspan="2">
+								<h:outputText value="${requisito.codice} " />
+							</td>
+						</tr>
+					</c:forEach>
+					<tr class="pure-table-odd">
+						<td class="red" colspan="2"><i class="fa fa-plus-square"></i>
+							Indicatori Risultati</td>
+					</tr>
+					<c:forEach var="ind" items='${managedBeanUC1.indicatori}'>
+						<tr>
+							<td colspan="2">
+								<h:outputText value="${ind.indicatore}" />
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
+
+			</div>
+			<div class="pure-u-1-5 l-box "></div>
+		</div>
+		<div class="pure-g">
+			<div class="l-box pure-u-1-5 "></div>
+			<div class="l-box pure-u-3-5 is-center">
+
+				<h1 class="dash grey">
+					<h:form>
+						<i class="fa fa-retweet fa-lg"></i>
+						<h:commandLink styleClass="pure-link grey"
+							value="Effettua un altra ricerca"
+							action='#{managedBeanUC1.stampaTipiEsame()}' />
+					</h:form>
+
+				</h1>
+			</div>
+			<div class="l-box pure-u-1-5 "></div>
+		</div>
+
 
 		<h2 class="is-center content-head black">
 			<br></br>More INFORMATION<br></br>
@@ -76,7 +150,7 @@
 	<div class="ribbon l-box-lrg pure-g">
 		<div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
 			<img class="pure-img-responsive" alt="File Icons" width="400"
-				src="img/common/icon1.jpg"/>
+				src="img/common/icon1.jpg" />
 		</div>
 		<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
 
@@ -102,7 +176,7 @@
 	<div class="ribbon1 l-box-lrg pure-g">
 		<div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
 			<img class="pure-img-responsive" alt="File Icons" width="400"
-				src="img/common/icon2.jpg"/>
+				src="img/common/icon2.jpg" />
 		</div>
 		<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
 
@@ -125,7 +199,7 @@
 	<div class="ribbon2 l-box-lrg pure-g">
 		<div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
 			<img class="pure-img-responsive" alt="File Icons" width="400"
-				src="img/common/icon3.jpg"/>
+				src="img/common/icon3.jpg" />
 		</div>
 		<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
 

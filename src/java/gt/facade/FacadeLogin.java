@@ -32,8 +32,8 @@ public class FacadeLogin {
 	}
 	public boolean loginAmministratore(String username ,String password) throws Exception{
 		boolean var=false;
+		if(em.find(Amministratore.class, username)==null) return false; 
 		Amministratore amministratore_nonAutenticato=em.find(Amministratore.class, username);
-
 		if( amministratore_nonAutenticato.checkPassword(password)){ 
 			this.amministratoreCorrente=amministratore_nonAutenticato; 
 			var=  true; 

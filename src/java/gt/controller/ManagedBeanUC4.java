@@ -30,7 +30,7 @@ public class ManagedBeanUC4 implements Serializable {
 	private String descrizione;
 	private String error1;
 	private String error2;
-	private String error3;
+	private String stringaErrore;
 	private long idTipologia;
 	@ManagedProperty("#{tipologia}")
 	private TipologiaEsame tipologia;
@@ -65,11 +65,13 @@ public class ManagedBeanUC4 implements Serializable {
 	public String creaTipologiaEsame(){
 		if(this.nome.isEmpty()) {
 			this.error1 = "error";
+			this.setStringaErrore("Inserisci un NOME valido!");
 			this.setTipologie(facade.consultaOfferta());
 			return "inserisciTipologia.xhtml";
 		} 
-		if(this.costo==0L){
+		if(this.costo==0L || this.costo==null){
 			this.error2 = "error";
+			this.setStringaErrore("Inserisci un COSTO valido!");
 			this.setTipologie(facade.consultaOfferta());
 			return "inserisciTipologia.xhtml";
 		}
@@ -87,7 +89,15 @@ public class ManagedBeanUC4 implements Serializable {
 			idInd.add(idIndicatore2); 
 		if(idIndicatore3!=0L)
 			idInd.add(idIndicatore3);
-
+		if(idInd.isEmpty()){
+			this.error1 = "error";
+			this.setStringaErrore("Inserisci almeno un INDICATORE valido!");
+			this.tipologia = facade.inziaTipoEsame(nome, descrizione, costo);
+			this.idTipologia = this.tipologia.getId();
+			this.indicatori = facade.getIndicatori();
+			this.prerequisiti = facade.getPrerequisiti();
+			return "associaIndicatoriRequisiti.xhtml";
+		}
 		List<Long> idReq = new ArrayList<Long>();
 		if(idPrerequisito1!=0L)
 			idReq.add(idPrerequisito1);
@@ -95,7 +105,15 @@ public class ManagedBeanUC4 implements Serializable {
 			idReq.add(idPrerequisito2); 
 		if(idPrerequisito3!=0L)
 			idReq.add(idPrerequisito3);
-		
+		if(idReq.isEmpty()){
+			this.error2 = "error";
+			this.setStringaErrore("Inserisci almeno un PREREQUISITO valido!");
+			this.tipologia = facade.inziaTipoEsame(nome, descrizione, costo);
+			this.idTipologia = this.tipologia.getId();
+			this.indicatori = facade.getIndicatori();
+			this.prerequisiti = facade.getPrerequisiti();
+			return "associaIndicatoriRequisiti.xhtml";
+		}
 		facade.updateTipologia(idInd, idReq);
 		this.tipologia = facade.trovaTipoEsame(idTipologia);
 		this.setIndicatoriS(new TreeSet<Indicatore>(tipologia.getIndicatori()));
@@ -103,85 +121,26 @@ public class ManagedBeanUC4 implements Serializable {
 		return "confermaTipologia.xhtml";
 	}
 
-	public Float getCosto() {
-		return costo;
-	}
-
-	public void setCosto(Float costo) {
-		this.costo = costo;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getDescrizione() {
-		return descrizione;
-	}
-
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
-	}
-
-	public String getError1() {
-		return error1;
-	}
-
-	public void setError1(String error1) {
-		this.error1 = error1;
-	}
-
-	public String getError2() {
-		return error2;
-	}
-
-	public void setError2(String error2) {
-		this.error2 = error2;
-	}
-
-	public String getError3() {
-		return error3;
-	}
-
-	public void setError3(String error3) {
-		this.error3 = error3;
-	}
-
-	public long getIdTipologia() {
-		return idTipologia;
-	}
-
-	public void setIdTipologia(long idTipologia) {
-		this.idTipologia = idTipologia;
-	}
-
-	public TipologiaEsame getTipologia() {
-		return tipologia;
-	}
-
-	public void setTipologia(TipologiaEsame tipologia) {
-		this.tipologia = tipologia;
-	}
-
-	public List<TipologiaEsame> getTipologie() {
-		return tipologie;
-	}
-
-	public void setTipologie(List<TipologiaEsame> tipologie) {
-		this.tipologie = tipologie;
-	}
-
-	public List<Indicatore> getIndicatori() {
-		return indicatori;
-	}
-
-	public void setIndicatori(List<Indicatore> indicatori) {
-		this.indicatori = indicatori;
-	}
+	public Float getCosto() {return costo;}
+	public void setCosto(Float costo) {this.costo = costo;}
+	public String getNome() {return nome;}
+	public void setNome(String nome) {this.nome = nome;}
+	public String getDescrizione() {return descrizione;}
+	public void setDescrizione(String descrizione) {this.descrizione = descrizione;}
+	public String getError1() {return error1;}
+	public void setError1(String error1) {this.error1 = error1;}
+	public String getError2() {return error2;}
+	public void setError2(String error2) {this.error2 = error2;}
+	public String getStringaErrore() {return stringaErrore;}
+	public void setStringaErrore(String stringaErrore) {this.stringaErrore = stringaErrore;}
+	public long getIdTipologia() {return idTipologia;}
+	public void setIdTipologia(long idTipologia) {this.idTipologia = idTipologia;}
+	public TipologiaEsame getTipologia() {return tipologia;}
+	public void setTipologia(TipologiaEsame tipologia) {this.tipologia = tipologia;}
+	public List<TipologiaEsame> getTipologie() {return tipologie;}
+	public void setTipologie(List<TipologiaEsame> tipologie) {this.tipologie = tipologie;}
+	public List<Indicatore> getIndicatori() {return indicatori;}
+	public void setIndicatori(List<Indicatore> indicatori) {this.indicatori = indicatori;}
 
 	public Set<Indicatore> getIndicatoriS() {
 		return indicatoriS;
@@ -211,7 +170,6 @@ public class ManagedBeanUC4 implements Serializable {
 	public long getIdIndicatore1() {
 		return idIndicatore1;
 	}
-
 	public void setIdIndicatore1(long idIndicatore1) {
 		this.idIndicatore1 = idIndicatore1;
 	}

@@ -25,6 +25,8 @@ public class Amministratore {
 		this.password = psw;
 	}
 	public boolean checkPassword(String password) {
+		if(password.isEmpty())
+			return false;
 		return this.password.equals(password);//Criptatore.getInstance().decodifica(this.password).equals(password);
 	}
 	@Override

@@ -25,6 +25,8 @@ public class ManagedBeanUC1 implements Serializable {
 	private Set<Prerequisito> prerequisiti;
 	private Set<Indicatore> indicatori;
 	private List<TipologiaEsame> tipologie;
+	private String error;
+	private String stringaErrore;
 
 	@EJB(beanName="facadeUC1")
 	private FacadeUC1 facade;
@@ -41,6 +43,12 @@ public class ManagedBeanUC1 implements Serializable {
 	}
 	public String scegliTipologia(){
 		this.tipologia=facade.stampaTipoEsame(id);
+		if(facade.stampaTipoEsame(id)==null || this.id==0L) {
+			this.setError("error");
+			this.stringaErrore = "Inserisci un ID valido!";
+			this.tipologie=facade.consultaOfferta();
+			return "consultaOffertaTipo.xhtml";
+		}
 		this.indicatori= new TreeSet<Indicatore>(tipologia.getIndicatori());
 		this.prerequisiti= new TreeSet<Prerequisito>(tipologia.getPrerequisiti());
 		return "offerta.xhtml";
@@ -60,6 +68,22 @@ public class ManagedBeanUC1 implements Serializable {
 	public void setPrerequisiti(Set<Prerequisito> prerequisiti) {this.prerequisiti = prerequisiti;}
 	public Set<Indicatore> getIndicatori() {return indicatori;}
 	public void setIndicatori(Set<Indicatore> indicatori) {this.indicatori = indicatori;}
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
+
+	public String getStringaErrore() {
+		return stringaErrore;
+	}
+
+	public void setStringaErrore(String stringaErrore) {
+		this.stringaErrore = stringaErrore;
+	}
+
 	public FacadeUC1 getFacade() {return facade;}
 	public void setFacade(FacadeUC1 facade) {this.facade = facade;}
 	

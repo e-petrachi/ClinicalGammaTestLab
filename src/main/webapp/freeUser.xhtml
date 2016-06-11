@@ -56,17 +56,24 @@
 					src="img/common/type1.jpg"/>
 			</div>
 		</div>
+		
 		<div class="pure-g">
-			
-			<div class="l-box pure-u-1 is-center">
-				<h1 class="dash pure-link">
-					<h:form>
-							<i class="fa fa-archive"></i>
-							<h:commandLink styleClass="pure-link"
-								value="Consulta la lista delle tipologie di ESAMI"
+			<div class="l-box pure-u-1-5 is-center">
+			<h2 class="dash pure-link grey">
+			<i class="fa fa-lg fa-archive"></i>
+			</h2>
+			</div>
+			<div class="l-box pure-u-4-5 is-center">
+				
+				<h2 class="dash">
+				<h:form>
+						<h:outputText value="&#160;" />
+						<h:commandLink styleClass="pure-link grey"
+								value="VISUALIZZA I NOSTRI ESAMI"
 								action='#{managedBeanUC1.stampaTipiEsame()}' />
-					</h:form>
-				</h1>
+				</h:form>
+				</h2>
+				
 			</div>
 
 		</div>

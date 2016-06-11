@@ -8,8 +8,20 @@
 
 <title>GammaTest.LAB | Free User</title>
 
+<link rel="stylesheet" href="css/normalize.css"/>
 <link rel="stylesheet" href="css/pure.css"/>
-<link rel="stylesheet" href="css/grids-responsive-min.css"/>
+<link rel="stylesheet" href="css/base.css"/>
+<link rel="stylesheet" href="css/base-context.css"/>
+<link rel="stylesheet" href="css/tables.css"/>
+<link rel="stylesheet" href="css/grids.css"/>
+<link rel="stylesheet" href="css/grids-units.css"/>
+<link rel="stylesheet" href="css/grids-responsive.css"/>
+<link rel="stylesheet" href="css/grids-responsive-old-ie.css"/>
+<link rel="stylesheet" href="css/grids-core.css"/>
+<link rel="stylesheet" href="css/forms.css"/>
+<link rel="stylesheet" href="css/forms-nr.css"/>
+<link rel="stylesheet" href="css/buttons.css"/>
+<link rel="stylesheet" href="css/buttons-core.css"/>
 <link rel="stylesheet" href="css/font-awesome.css"/>
 <link rel="stylesheet" href="css/layouts/style.css"/>
 
@@ -22,11 +34,11 @@
 			<a class="pure-menu-heading" href="#">Gamma Test</a>
 
 			<ul class="pure-menu-list">
-				<li class="pure-menu-item"><a href="index.html"
+				<li class="pure-menu-item"><a href="index.xhtml"
 					class="pure-menu-link">HOME</a></li>
-				<li class="pure-menu-item"><a href="index.html#login"
+				<li class="pure-menu-item"><a href="index.xhtml#login"
 					class="pure-menu-link">ACCEDI</a></li>
-				<li class="pure-menu-item"><a href="logout.html"
+				<li class="pure-menu-item"><a href="logout.xhtml"
 					class="pure-menu-link">LOGOUT</a></li>
 			</ul>
 		</div>
@@ -43,23 +55,25 @@
 				<img class="pure-img-responsive" alt="set" width="700px"
 					src="img/common/type1.jpg"/>
 			</div>
-			<div class="is-center l-box pure-u-1">
-
-
-				<h1 class="is-center dash pure-link">
-
-
-					<h:form>
-							<i class="fa fa-archive"></i>
-							<h:commandLink styleClass="pure-link"
-								value="Consulta la lista delle tipologie di ESAMI"
+		</div>
+		
+		<div class="pure-g">
+			<div class="l-box pure-u-1-5 is-center">
+			<h2 class="dash pure-link grey">
+			<i class="fa fa-lg fa-archive"></i>
+			</h2>
+			</div>
+			<div class="l-box pure-u-4-5 is-center">
+				
+				<h2 class="dash">
+				<h:form>
+						<h:outputText value="&#160;" />
+						<h:commandLink styleClass="pure-link grey"
+								value="VISUALIZZA I NOSTRI ESAMI"
 								action='#{managedBeanUC1.stampaTipiEsame()}' />
-						</h:form>
-
-
-				</h1>
-
-
+				</h:form>
+				</h2>
+				
 			</div>
 
 		</div>

@@ -26,6 +26,7 @@ public class ManagedBeanUC5 implements Serializable {
 	private List<Medico> medici;
 	private String error1;
 	private String error2;
+	private String stringaErrore;
 	
 	@EJB(beanName="facadeUC5")
 	private FacadeUC5 facade;
@@ -37,10 +38,16 @@ public class ManagedBeanUC5 implements Serializable {
 	public String trovaEsami(){
 		if(nome.isEmpty()){
 			this.error1 = "error";
+			this.stringaErrore = "Inserisci un NOME valido!";
 			this.medici=facade.anagraficaMedici();
 			return "ricercaEsami.xhtml";
 		} else if(cognome.isEmpty()){
 			this.error2 = "error";
+			this.stringaErrore = "Inserisci un COGNOME valido!";
+			this.medici=facade.anagraficaMedici();
+			return "ricercaEsami.xhtml";
+		} else if (facade.esamiEffettuatiMedico(nome, cognome).isEmpty()){
+			this.stringaErrore = "Il medico non ha effettuato Esami o non è presente nel Database!";
 			this.medici=facade.anagraficaMedici();
 			return "ricercaEsami.xhtml";
 		}
@@ -67,6 +74,12 @@ public class ManagedBeanUC5 implements Serializable {
 	}
 	public void setError2(String error2) {
 		this.error2 = error2;
+	}
+	public String getStringaErrore() {
+		return stringaErrore;
+	}
+	public void setStringaErrore(String stringaErrore) {
+		this.stringaErrore = stringaErrore;
 	}
 	public FacadeUC5 getFacade() {return facade;}
 	public void setFacade(FacadeUC5 facade) {this.facade = facade;}

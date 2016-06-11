@@ -16,7 +16,7 @@ import gt.model.*;
 @RequestScoped
 public class ManagedBeanUC2 implements Serializable {
 
-	private static final long serialVersionUID = 3L;
+	private static final long serialVersionUID = 2L;
 
 	@ManagedProperty("#{tipo}")
 	private long tipo;
@@ -28,6 +28,8 @@ public class ManagedBeanUC2 implements Serializable {
 	private List<TipologiaEsame> tipologie;
 	private List<Paziente> pazienti;
 	private String error;
+
+	private String stringaErrore;
 
 	@EJB(beanName="facadeUC2")
 	private FacadeUC2 facade;
@@ -42,6 +44,7 @@ public class ManagedBeanUC2 implements Serializable {
 		this.setPazienti(facade.getPazienti());
 		if(facade.trovaTipoEsame(tipo)==null) {
 			this.error = "error";
+			this.setStringaErrore("Inserisci un ID valido!");
 			this.setTipologie(facade.consultaOfferta());
 			return "inserisciEsame.xhtml";
 		}
@@ -52,16 +55,14 @@ public class ManagedBeanUC2 implements Serializable {
 		this.setT(facade.trovaTipoEsame(tipo));
 		if(facade.trovaPaziente(paziente)==null) {
 			this.error = "error";
+			this.setStringaErrore("Inserisci un USER valido!");
 			this.setPazienti(facade.getPazienti());
 			return "associaPaziente.xhtml";
 		}
 		this.setP(facade.trovaPaziente(paziente));	
 		Esame e = facade.creaEsame(p,t);
-		if(e==null) return "erroreInserimentoEsame.xhtml";
-		else{
-			this.esame = e;
-			return "confermaEsame.xhtml";
-		}	
+		this.esame = e;
+		return "confermaEsame.xhtml";
 	}
 
 	public long getTipo() {return tipo;}
@@ -87,6 +88,14 @@ public class ManagedBeanUC2 implements Serializable {
 
 	public void setError(String error) {
 		this.error = error;
+	}
+
+	public String getStringaErrore() {
+		return stringaErrore;
+	}
+
+	public void setStringaErrore(String stringaErrore) {
+		this.stringaErrore = stringaErrore;
 	}
 
 
