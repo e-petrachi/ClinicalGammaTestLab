@@ -27,7 +27,7 @@ public class ManagedBeanLogin implements Serializable {
 
 	public ManagedBeanLogin(){}
 
-	public String loginA() throws Exception {
+	public String loginA() {
 		if(facade.loginAmministratore(username, password))
 			return "funAmministratore.xhtml";
 		this.setError("error");
@@ -35,13 +35,14 @@ public class ManagedBeanLogin implements Serializable {
 		return "amministratore.xhtml";
 	}
 	
-	public String loginP() throws Exception {
-		String rit="paziente.xhtml";
+	public String loginP() {
 		if(facade.loginPaziente(username, password))
-			rit="index.xhtml";
-		return rit;
+			return "";
+		this.setError("error");
+		this.stringaErrore = "Inserisci dei dati validi per Autenticarti!";
+		return "amministratore.xhtml";
 	}
-	public String avviamento(){
+	public String avviamento() {
 		facade1.avvia();
 		return "amministratore.xhtml";
 	}

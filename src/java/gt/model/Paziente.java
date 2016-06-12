@@ -20,8 +20,7 @@ public class Paziente {
 
 	public Paziente(String user,String psw,String nome, String cognome) {
 		this.username = user; 
-		/*this.password = Criptatore.getInstance().codifica(psw);*/
-		this.password = psw;
+		this.password = Criptatore.getInstance().codifica(psw);
 		this.nome = nome; 
 		this.cognome = cognome;
 		this.esami = new ArrayList<Esame>();
@@ -39,11 +38,10 @@ public class Paziente {
 	public void setUsername(String username) {this.username = username;}
 	
 	public void setPassword(String psw) {
-		/*this.password = Criptatore.getInstance().codifica(psw);*/
-		this.password = psw;
+		this.password = Criptatore.getInstance().codifica(psw);
 		}
 	public boolean checkPassword(String password) {
-		return this.password.equals(password);//Criptatore.getInstance().decodifica(this.password).equals(password);
+		return Criptatore.getInstance().decodifica(this.password).equals(password);
 	}
 	@Override
 	public int hashCode() {

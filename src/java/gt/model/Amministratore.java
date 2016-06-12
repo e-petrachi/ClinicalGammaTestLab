@@ -15,19 +15,17 @@ public class Amministratore {
 	public Amministratore(){}
 	public Amministratore(String user, String psw) {
 		this.username = user;
-		/*this.password = Criptatore.getInstance().codifica(psw);*/
-		this.password = psw;
+		this.password = Criptatore.getInstance().codifica(psw);
 		}
 	public String getUsername() {return username;}
 	public void setUsername(String username) {this.username = username;}
 	public void setPassword(String psw) {
-		/*this.password = Criptatore.getInstance().codifica(psw);*/
-		this.password = psw;
+		this.password = Criptatore.getInstance().codifica(psw);
 	}
 	public boolean checkPassword(String password) {
 		if(password.isEmpty())
 			return false;
-		return this.password.equals(password);//Criptatore.getInstance().decodifica(this.password).equals(password);
+		return Criptatore.getInstance().decodifica(this.password).equals(password);
 	}
 	@Override
 	public int hashCode() {

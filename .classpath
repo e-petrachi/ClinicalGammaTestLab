@@ -112,8 +112,5 @@
 	<classpathentry kind="lib" path="/Users/Administrator/bower_components/tomee/xbean-finder-shaded-4.2.jar"/>
 	<classpathentry kind="lib" path="/Users/Administrator/bower_components/tomee/xbean-naming-4.2.jar"/>
 	<classpathentry kind="lib" path="/Users/Administrator/bower_components/tomee/xbean-reflect-4.2.jar"/>
-	<classpathentry kind="lib" path="/Users/Administrator/bower_components/security/javax-crypto.jar"/>
-	<classpathentry kind="lib" path="/Users/Administrator/bower_components/security/javax.security.jar"/>
-	<classpathentry kind="lib" path="/Users/Administrator/bower_components/security/sun.misc.BASE64Decoder.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

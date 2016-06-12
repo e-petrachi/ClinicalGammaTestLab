@@ -56,5 +56,11 @@ Amministratore Log-In:
 Username = "Admin"
 Password = "password" 
 
+Database(inizializzazione e popolamento al primo click su ADMIN-USER o FREE-USER):
+
+src/java/META-INF/clinicaGamma.backup
+
+
+
  
 

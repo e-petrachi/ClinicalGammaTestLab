@@ -20,7 +20,7 @@ public class FacadeLogin {
 	
 	public FacadeLogin(){}
 	
-	public boolean loginPaziente(String username ,String password) throws Exception{
+	public boolean loginPaziente(String username ,String password) {
 		boolean var=false;
 		Paziente paziente_nonAutenticato=em.find(Paziente.class, username);
 
@@ -30,7 +30,7 @@ public class FacadeLogin {
 		}
 		return var;
 	}
-	public boolean loginAmministratore(String username ,String password) throws Exception{
+	public boolean loginAmministratore(String username ,String password) {
 		boolean var=false;
 		if(em.find(Amministratore.class, username)==null) return false; 
 		Amministratore amministratore_nonAutenticato=em.find(Amministratore.class, username);

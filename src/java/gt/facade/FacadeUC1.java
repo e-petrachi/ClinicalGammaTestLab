@@ -9,8 +9,6 @@ import javax.persistence.criteria.CriteriaQuery;
 
 import org.apache.log4j.Logger;
 
-
-
 import gt.model.*;
 
 @Stateless(name="facadeUC1")
@@ -168,7 +166,7 @@ public class FacadeUC1 {
 			em.persist(esame5);
 			
 			Esame esame6 = new Esame(p5,tipo6);
-			esame5.setMedico(m5);
+			esame6.setMedico(m5);
 			p5.addEsame(esame6);
 			m5.addEsame(esame6);
 			em.persist(esame6);
@@ -179,17 +177,23 @@ public class FacadeUC1 {
 			m6.addEsame(esame7);
 			em.persist(esame7);
 
-			Risultato risultatoA1 = new Risultato(indicatoreA, "0,30");
-			Risultato risultatoA2 = new Risultato(indicatoreA, "0,50");
-			Risultato risultatoB  = new Risultato(indicatoreB, "0,30");
+			Risultato risultatoA1 = new Risultato(indicatoreA, "8,30");
+			Risultato risultatoA2 = new Risultato(indicatoreA, "3,50");
+			Risultato risultatoB  = new Risultato(indicatoreB, "1,80");
+			Risultato risultatoC  = new Risultato(indicatoreC, "3,10");
+			Risultato risultatoE  = new Risultato(indicatoreE, "0,07");
 
 			esame1.addRisultato(risultatoA1);
 			esame1.addRisultato(risultatoB);
+			esame1.addRisultato(risultatoC);
+			esame1.addRisultato(risultatoE);
 			esame4.addRisultato(risultatoA2);
 
 			em.persist(risultatoA1);
 			em.persist(risultatoB);
 			em.persist(risultatoA2);
+			em.persist(risultatoC);
+			em.persist(risultatoE);
 			em.merge(esame1);
 			em.merge(esame4);
 

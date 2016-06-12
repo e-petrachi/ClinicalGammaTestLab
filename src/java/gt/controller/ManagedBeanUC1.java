@@ -33,7 +33,7 @@ public class ManagedBeanUC1 implements Serializable {
 
 	public ManagedBeanUC1(){}
 	
-	public String avviamento(){
+	public String avviamento() {
 		facade.avvia();
 		return "freeUser.xhtml";
 	}
