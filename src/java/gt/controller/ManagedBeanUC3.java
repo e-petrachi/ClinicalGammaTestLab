@@ -13,7 +13,7 @@ public class ManagedBeanUC3 {
 	
 	private Paziente paziente;
 	
-	@ManagedProperty(value="#{param.idEsame}")
+	@ManagedProperty("#{codEsame}")
 	private String codEsame;
 	private Esame esame;
 	
@@ -22,7 +22,7 @@ public class ManagedBeanUC3 {
 	
 	public String dettaglioEsame(){
 		this.esame=facade.getEsame(codEsame);
-		return null;
+		return "";
 	}
 
 	public Paziente getPaziente() {return paziente;}

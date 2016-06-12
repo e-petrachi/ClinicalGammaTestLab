@@ -68,22 +68,10 @@ public class ManagedBeanUC1 implements Serializable {
 	public void setPrerequisiti(Set<Prerequisito> prerequisiti) {this.prerequisiti = prerequisiti;}
 	public Set<Indicatore> getIndicatori() {return indicatori;}
 	public void setIndicatori(Set<Indicatore> indicatori) {this.indicatori = indicatori;}
-	public String getError() {
-		return error;
-	}
-
-	public void setError(String error) {
-		this.error = error;
-	}
-
-	public String getStringaErrore() {
-		return stringaErrore;
-	}
-
-	public void setStringaErrore(String stringaErrore) {
-		this.stringaErrore = stringaErrore;
-	}
-
+	public String getError() {return error;}
+	public void setError(String error) {this.error = error;}
+	public String getStringaErrore() {return stringaErrore;}
+	public void setStringaErrore(String stringaErrore) {this.stringaErrore = stringaErrore;}
 	public FacadeUC1 getFacade() {return facade;}
 	public void setFacade(FacadeUC1 facade) {this.facade = facade;}
 	

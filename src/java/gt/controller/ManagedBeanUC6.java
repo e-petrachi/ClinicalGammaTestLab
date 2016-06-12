@@ -12,7 +12,7 @@ import gt.model.*;
 @ManagedBean
 public class ManagedBeanUC6 {
 
-	@ManagedProperty(value="#{param.idEsame}")
+	@ManagedProperty("#{codEsame}")
 	private Long codEsame;
 	private Esame esame;
 	private Risultato risultato;
@@ -35,12 +35,12 @@ public class ManagedBeanUC6 {
 
 	public String inserisciMedico_ora(){
 		facade.setMedicoAndEsame(nomeMedico, cognomeMedico, codEsame,data);
-		return "faces/compilaRisultati.jsp";
+		return "";
 	}
 
 	public String inserisciRisultati(){
 		facade.inserisciRisutatiEsame(indicatore, valore);
-		return "faces/compilaRisultati.jsp";
+		return "";
 	}
 
 	public Long getCodEsame() {return codEsame;}

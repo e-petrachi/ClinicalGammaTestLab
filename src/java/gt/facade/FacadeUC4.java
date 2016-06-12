@@ -49,10 +49,10 @@ public class FacadeUC4 {
 		}
 	}
 	
-	public EntityManager getEm() {return em;}
-	public void setEm(EntityManager em) {this.em = em;}
-	public TipologiaEsame getTipoEsame() {return tipoEsame;}
-	public void setTipoEsame(TipologiaEsame tipoEsame) {this.tipoEsame = tipoEsame;}
+	public TipologiaEsame trovaTipoEsame(long codTipoEsame){
+		TipologiaEsame tipoEsame = em.find(TipologiaEsame.class, codTipoEsame);
+		return tipoEsame;
+	}
 
 	public List<Indicatore> getIndicatori() {
 		CriteriaQuery<Indicatore> cq = em.getCriteriaBuilder().createQuery(Indicatore.class);
@@ -69,10 +69,8 @@ public class FacadeUC4 {
 		List<Prerequisito> t = em.createQuery(cq).getResultList();
 		return  t;
 	}
-
-	public TipologiaEsame trovaTipoEsame(long codTipoEsame){
-		TipologiaEsame tipoEsame = em.find(TipologiaEsame.class, codTipoEsame);
-		return tipoEsame;
-	}
-	
+	public EntityManager getEm() {return em;}
+	public void setEm(EntityManager em) {this.em = em;}
+	public TipologiaEsame getTipoEsame() {return tipoEsame;}
+	public void setTipoEsame(TipologiaEsame tipoEsame) {this.tipoEsame = tipoEsame;}
 }

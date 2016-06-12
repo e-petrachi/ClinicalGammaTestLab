@@ -37,6 +37,5 @@ public class FacadeUC5 {
 	}
 
 	public EntityManager getEm() {return em;}
-
 	public void setEm(EntityManager em) {this.em = em;}
 }

@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 
 import gt.facade.*;
@@ -37,34 +34,7 @@ public class ManagedBeanLogin implements Serializable {
 		this.stringaErrore = "Inserisci dei dati validi per Autenticarti!";
 		return "amministratore.xhtml";
 	}
-	/*public String loginProject() throws Exception {
-        boolean result = facade.loginAmministratore(username, password);
-        if (result) {
-            // Richiama la sessione Http e salva username
-            HttpSession session = Util.getSession();
-            session.setAttribute("username", username);
-
-            return "funAmministratore.xhtml";
-        } else {
-
-            FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                    "Credenziali di accesso non valide!",
-                    "Riprova di nuovo!"));
-
-            // manda un messaggio di sessione non valida
-            return "amministratore.xhtml";
-        }
-    }
-
-    public String logout() {
-      HttpSession session = Util.getSession();
-      session.invalidate();
-      return "amministratore.xhtml";
-   }*/
-
-
+	
 	public String loginP() throws Exception {
 		String rit="paziente.xhtml";
 		if(facade.loginPaziente(username, password))
