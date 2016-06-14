@@ -1,13 +1,13 @@
 # gammaTestLab
 
-Project for the course of SIW in 06/2016
-Course of Degree in Computer Engineering
+Progetto per il corso di SIW del 06/2016
+Laurea in Ingegneria Informatica UniRoma3
 
 Developer: 
 
 Enrico Petrachi & Marco Zebi 
 
-Used technologies: 
+Tecnologie Utilizzate: 
 
 - JAVA
 - JEE + EJB
@@ -52,7 +52,13 @@ L'amministrazione può svolgere le seguenti operazioni:
 	
 Specifiche:
 
-Per ogni tipologia di esame sono di interesse un nome, un codice, una descrizione, un costo. Ogni tipologia di esame ha inoltre un insieme di prerequisiti che sono rappresentati da un insieme coppie nome valore. Ogni tipologia di esame ha un insieme di indicatori per i risultati. Per ogni esame è necessario riportare, oltre al paziente, la data di prenotazione, la data in cui è stato effettuato l'esame ed il nome del medico che ha condotto l'esame. Per ogni medico è necessario gestire: nome, cognome, specializzazione. I risultati di un esame sono un insieme di coppie nome-valore. Ipotizziamo che i pagamenti vengano gestiti off-line
+Per ogni tipologia di esame sono di interesse un nome, un codice, una descrizione, un costo. 
+Ogni tipologia di esame ha inoltre un insieme di prerequisiti che sono rappresentati da un insieme coppie nome valore. 
+Ogni tipologia di esame ha un insieme di indicatori per i risultati. 
+Per ogni esame è necessario riportare, oltre al paziente, la data di prenotazione, la data in cui è stato effettuato l'esame ed il nome del medico che ha condotto l'esame. 
+Per ogni medico è necessario gestire: nome, cognome, specializzazione. 
+I risultati di un esame sono un insieme di coppie nome-valore. 
+Ipotizziamo che i pagamenti vengano gestiti off-line
 
 Amministratore Log-In:
 
@@ -62,8 +68,3 @@ Password = "password"
 Database(inizializzazione e popolamento al primo click su ADMIN-USER o FREE-USER):
 
 src/java/META-INF/clinicaGamma.backup
-
-
-
- 
-

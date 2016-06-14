@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.apache.log4j.Logger;
 
@@ -28,9 +29,8 @@ public class FacadeUC3 {
 		
 		this.setCodpaziente(codPaz);
 		String jpql = "SELECT e FROM Esame e WHERE paziente_id="+codPaz;   
-		Query query = em.createQuery(jpql);
+		TypedQuery<Esame> query = em.createQuery(jpql, Esame.class);
 		logger.debug(em);
-		@SuppressWarnings("unchecked")
 		List<Esame> e =query.getResultList();
 		return e;
 	}

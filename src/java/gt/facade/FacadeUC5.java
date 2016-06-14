@@ -4,7 +4,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 
 import org.apache.log4j.Logger;
@@ -20,12 +20,12 @@ public class FacadeUC5 {
 
 	public FacadeUC5() {}	
 
-	@SuppressWarnings("unchecked")
 	public List<Esame> esamiEffettuatiMedico(String nome,String cognome){
 		String jpql = "SELECT e FROM Esame e,Medico m WHERE e.medico.id=m.id and m.nome='"+nome+"' and m.cognome='"+cognome+"'";   
-		Query query = em.createQuery(jpql);
+		TypedQuery<Esame> q = em.createQuery(jpql, Esame.class);
 		logger.debug(em);
-		return (List<Esame>) query.getResultList();		
+		List<Esame> esami = q.getResultList();	
+		return esami;
 	}
 
 	public List<Medico> anagraficaMedici() {
