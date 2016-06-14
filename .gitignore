@@ -16,4 +16,4 @@ local.properties
 Thumbs.db   
 Desktop.ini 
 .svn
-.graffle
+*.graffle
